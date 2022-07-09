@@ -1,0 +1,7 @@
+.guesses {
+  width: min-content;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: .1875rem;
+}

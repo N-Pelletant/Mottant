@@ -1,0 +1,21 @@
+@import url('./Components/common.module.css');
+
+@font-face {
+    font-family: KarnakPro;
+    src: url('./fonts/KarnakPro-Black.ttf');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color-tone-7);
+    color: var(--color-tone-1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

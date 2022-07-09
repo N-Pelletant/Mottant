@@ -1,0 +1,15 @@
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.keyboardRow {
+  width: min-content;
+  display: flex;
+  margin-bottom: 0.1875rem;
+}
+
+.keyboardRow > *:not(:last-child) {
+  margin-right: 0.1875rem;
+}

@@ -1,0 +1,45 @@
+.header {
+    position: relative;
+    height: 1.75em;
+    width: 100%;
+    padding: 0 .5em;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px var(--color-tone-4);
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    background: none;
+    border: none;   
+    cursor: pointer;
+    padding: 0 .125em;
+}
+
+.infoButton {
+    left: .5em;
+    transform: translateY(-50%);
+}
+
+.settingsButton {
+    right: .5em;
+    transform: translateY(-50%);
+}
+
+.statButton {
+    right: 1.5em;
+    transform: translateY(-50%);
+}
+
+.icon {
+    height: 0.75em;
+    width: 0.75em;
+    color: var(--color-tone-1);
+}
+
+.title {
+    margin: 0 auto;
+    font-family: KarnakPro;
+    font-size: 1.25em;
+}
