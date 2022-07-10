@@ -153,7 +153,7 @@ const useGuesses = () => {
         break;
       }
       case "↵": {
-        if (currentGuess.length !== 5 && !words.includes(currentGuess)) return;
+        if (currentGuess.length !== 5 || !words.includes(currentGuess)) return;
         setMatrix((old) => {
           old[row] = checkLetterPositions(matrix[row], dailyWord);
           return JSON.parse(JSON.stringify(old));
