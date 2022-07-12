@@ -2,49 +2,49 @@ import { MouseEventHandler } from 'react';
 import { Key } from '../Key';
 import classes from './Keyboard.module.css';
 import { FiDelete } from 'react-icons/fi'
-import { LetterState } from '../enums';
+import { BaseCharacter, LetterState } from '../../types';
 
 type KeyboardProps = {
 	onClick: MouseEventHandler<HTMLButtonElement>;
-	checkLetterState: (key: string) => LetterState;
+	checkLetterState: (key: BaseCharacter) => LetterState;
 }
 
 const Keyboard = ({ onClick, checkLetterState }: KeyboardProps) => {
 	return (
 		<div className={classes.keyboard}>
 			<div className={classes.keyboardRow}>
-				<Key onClick={onClick} datakey="A" state={checkLetterState("A")} >A</Key>
-				<Key onClick={onClick} datakey="Z" state={checkLetterState("Z")} >Z</Key>
-				<Key onClick={onClick} datakey="E" state={checkLetterState("E")} >E</Key>
-				<Key onClick={onClick} datakey="R" state={checkLetterState("R")} >R</Key>
-				<Key onClick={onClick} datakey="T" state={checkLetterState("T")} >T</Key>
-				<Key onClick={onClick} datakey="Y" state={checkLetterState("Y")} >Y</Key>
-				<Key onClick={onClick} datakey="U" state={checkLetterState("U")} >U</Key>
-				<Key onClick={onClick} datakey="I" state={checkLetterState("I")} >I</Key>
-				<Key onClick={onClick} datakey="O" state={checkLetterState("O")} >O</Key>
-				<Key onClick={onClick} datakey="P" state={checkLetterState("P")} >P</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.A} state={checkLetterState(BaseCharacter.A)} >A</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.Z} state={checkLetterState(BaseCharacter.Z)} >Z</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.E} state={checkLetterState(BaseCharacter.E)} >E</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.R} state={checkLetterState(BaseCharacter.R)} >R</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.T} state={checkLetterState(BaseCharacter.T)} >T</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.Y} state={checkLetterState(BaseCharacter.Y)} >Y</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.U} state={checkLetterState(BaseCharacter.U)} >U</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.I} state={checkLetterState(BaseCharacter.I)} >I</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.O} state={checkLetterState(BaseCharacter.O)} >O</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.P} state={checkLetterState(BaseCharacter.P)} >P</Key>
 			</div>
 			<div className={classes.keyboardRow}>
-				<Key onClick={onClick} datakey="Q" state={checkLetterState("Q")} >Q</Key>
-				<Key onClick={onClick} datakey="S" state={checkLetterState("S")} >S</Key>
-				<Key onClick={onClick} datakey="D" state={checkLetterState("D")} >D</Key>
-				<Key onClick={onClick} datakey="F" state={checkLetterState("F")} >F</Key>
-				<Key onClick={onClick} datakey="G" state={checkLetterState("G")} >G</Key>
-				<Key onClick={onClick} datakey="H" state={checkLetterState("H")} >H</Key>
-				<Key onClick={onClick} datakey="J" state={checkLetterState("J")} >J</Key>
-				<Key onClick={onClick} datakey="K" state={checkLetterState("K")} >K</Key>
-				<Key onClick={onClick} datakey="L" state={checkLetterState("L")} >L</Key>
-				<Key onClick={onClick} datakey="M" state={checkLetterState("M")} >M</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.Q} state={checkLetterState(BaseCharacter.Q)} >Q</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.S} state={checkLetterState(BaseCharacter.S)} >S</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.D} state={checkLetterState(BaseCharacter.D)} >D</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.F} state={checkLetterState(BaseCharacter.F)} >F</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.G} state={checkLetterState(BaseCharacter.G)} >G</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.H} state={checkLetterState(BaseCharacter.H)} >H</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.J} state={checkLetterState(BaseCharacter.J)} >J</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.K} state={checkLetterState(BaseCharacter.K)} >K</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.L} state={checkLetterState(BaseCharacter.L)} >L</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.M} state={checkLetterState(BaseCharacter.M)} >M</Key>
 			</div>
 			<div className={classes.keyboardRow}>
-				<Key onClick={onClick} datakey="↵" >ENTER</Key>
-				<Key onClick={onClick} datakey="W" state={checkLetterState("W")} >W</Key>
-				<Key onClick={onClick} datakey="X" state={checkLetterState("X")} >X</Key>
-				<Key onClick={onClick} datakey="C" state={checkLetterState("C")} >C</Key>
-				<Key onClick={onClick} datakey="V" state={checkLetterState("V")} >V</Key>
-				<Key onClick={onClick} datakey="B" state={checkLetterState("B")} >B</Key>
-				<Key onClick={onClick} datakey="N" state={checkLetterState("N")} >N</Key>
-				<Key onClick={onClick} datakey="←" ><FiDelete /></Key>
+				<Key onClick={onClick} datakey={"↵"} >ENTER</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.W} state={checkLetterState(BaseCharacter.W)} >W</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.X} state={checkLetterState(BaseCharacter.X)} >X</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.C} state={checkLetterState(BaseCharacter.C)} >C</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.V} state={checkLetterState(BaseCharacter.V)} >V</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.B} state={checkLetterState(BaseCharacter.B)} >B</Key>
+				<Key onClick={onClick} datakey={BaseCharacter.N} state={checkLetterState(BaseCharacter.N)} >N</Key>
+				<Key onClick={onClick} datakey={"←"} ><FiDelete /></Key>
 			</div>
 		</div>
 	);

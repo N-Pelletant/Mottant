@@ -1,5 +1,3 @@
-@import url('./Components/common.module.css');
-
 @font-face {
     font-family: KarnakPro;
     src: url('./fonts/KarnakPro-Black.ttf');
@@ -18,4 +16,24 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+:global(.unknown) {
+    --state-color: var(--color-tone-2);
+}
+
+:global(.absent) {
+    --state-color: var(--color-tone-4);
+}
+
+:global(.misplaced) {
+    --state-color: var(--yellow);
+}
+
+:global(.present) {
+    --state-color: var(--green);
+}
+
+:global(.empty) {
+    border: 2px solid var(--color-tone-4);
 }

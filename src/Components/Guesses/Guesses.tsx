@@ -1,4 +1,4 @@
-import { GuessesMatrix } from "../../hooks";
+import { GuessesMatrix } from "../../types";
 import { Letter } from "../Letter";
 import classes from './Guesses.module.css';
 

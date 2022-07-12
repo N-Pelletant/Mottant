@@ -1,8 +1,8 @@
 import { HTMLProps, ReactNode } from "react";
 import cn from 'classnames';
 import classes from './Letter.module.css';
-import { getStateClass } from "../utils";
-import { LetterState } from "../enums";
+import { getStateClass } from "../../utils";
+import { LetterState } from "../../types";
 
 export type LetterProps = {
   state?: LetterState;

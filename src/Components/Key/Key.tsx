@@ -1,8 +1,8 @@
 import { MouseEventHandler, ReactNode } from "react";
 import cn from 'classnames';
 import classes from './Key.module.css';
-import { LetterState } from '../enums';
-import { getStateClass } from "../utils";
+import { LetterState } from '../../types';
+import { getStateClass } from "../../utils";
 
 export type KeyProps = {
 	className?: string;
