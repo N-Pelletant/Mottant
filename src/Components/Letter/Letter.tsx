@@ -11,7 +11,7 @@ export type LetterProps = {
 
 const Letter = ({
   children,
-  state = children ? LetterState.UNKNOWN : LetterState.EMPTY,
+  state = LetterState.EMPTY,
   ...props
 }: LetterProps) => {
   return (
@@ -20,6 +20,7 @@ const Letter = ({
         cn(
           classes.letter,
           getStateClass(state),
+          { [classes.popin]: !!children }
         )
       }
       {...props}

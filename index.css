@@ -1,9 +1,10 @@
 * {
     margin: 0;
     font-size: 32px;
+    box-sizing: border-box;
 }
-
 :root {
+    --animation-duration-pop: 100ms;
     --color-tone-1: #ffffff;
     --color-tone-2: #818384;
     --color-tone-3: #565758;
