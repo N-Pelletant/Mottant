@@ -1,28 +1,101 @@
 @keyframes Pop {
   0% {
-      transform: scale(0.8);
-      opacity: 0;
+    transform: scale(0.8);
+    opacity: 0;
   }
+
   40% {
-      transform: scale(1.1);
-      opacity: 1;
+    transform: scale(1.1);
+    opacity: 1;
   }
 }
 
+.popin {
+  animation-name: Pop;
+  animation-duration: var(--animation-duration-pop);
+}
+
+@keyframes FlipIn {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes FlipOut {
+  50% {
+    transform: scaleY(0);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.flip::before {
+  animation-name: FlipIn;
+}
+
+.flip::after {
+  animation-name: FlipOut;
+}
+
 .letter {
+  position: relative;
   height: 2rem;
   width: 2rem;
   font-size: 1rem;
   line-height: 2rem;
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-weight: bold;
-  text-align: center;
-  background-color: var(--state-color);
-  border: solid 2px var(--state-color);
   user-select: none;
+  overflow: hidden;
 }
 
-.popin {
-  animation-name: Pop;
-  animation-duration: var(--animation-duration-pop);
+.letter[data-index="0"] {
+  --delay-factor: 0
+}
+
+.letter[data-index="1"] {
+  --delay-factor: 1
+}
+
+.letter[data-index="2"] {
+  --delay-factor: 2
+}
+
+.letter[data-index="3"] {
+  --delay-factor: 3
+}
+
+.letter[data-index="4"] {
+  --delay-factor: 4
+}
+
+.letter::before,
+.letter::after {
+  content: attr(data-letter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  animation-duration: var(--animation-duration-flip);
+  animation-delay: calc(var(--delay-factor) * 150ms);
+  animation-fill-mode: forwards;
+}
+
+.letter::before {
+  background-color: transparent;
+  border: 2px solid var(--color-tone-4);
+}
+
+.letter::after {
+  transform: scaleY(0);
+  background-color: var(--state-color);
+  border: var(--state-border);
 }

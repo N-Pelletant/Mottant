@@ -17,6 +17,7 @@ const Guesses = ({ matrix }: GuessesProps) => {
 								<Letter 
 									key={`${i1}_${i2}`}
 									data-index={i2}
+									data-letter={letter || undefined}
 									state={state}
 								>
 									{letter}

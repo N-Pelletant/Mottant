@@ -16,20 +16,25 @@
 
 :global(.unknown) {
     --state-color: var(--color-tone-2);
+    --state-border: 0 solid transparent;
 }
 
 :global(.absent) {
     --state-color: var(--color-tone-4);
+    --state-border: 0 solid transparent;
 }
 
 :global(.misplaced) {
     --state-color: var(--yellow);
+    --state-border: 0 solid transparent;
 }
 
 :global(.present) {
     --state-color: var(--green);
+    --state-border: 0 solid transparent;
 }
 
 :global(.empty) {
-    border: 2px solid var(--color-tone-4);
+    --state-color: transparent;
+    --state-border: 2px solid var(--color-tone-4);
 }

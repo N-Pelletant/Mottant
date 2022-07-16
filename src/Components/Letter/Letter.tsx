@@ -1,12 +1,12 @@
-import { HTMLProps, ReactNode } from "react";
 import cn from 'classnames';
+import { HTMLProps } from "react";
 import classes from './Letter.module.css';
 import { getStateClass } from "../../utils";
 import { LetterState } from "../../types";
 
 export type LetterProps = {
   state?: LetterState;
-  children?: ReactNode;
+  children?: string;
 } & HTMLProps<HTMLDivElement>
 
 const Letter = ({
@@ -19,14 +19,15 @@ const Letter = ({
       className={
         cn(
           classes.letter,
+          { 
+            [classes.popin]: state === LetterState.EMPTY && !!children,
+            [classes.flip]: state !== LetterState.EMPTY,
+          },
           getStateClass(state),
-          { [classes.popin]: !!children }
         )
       }
       {...props}
-    >
-      {children}
-    </div>
+    />
   );
 }
 
