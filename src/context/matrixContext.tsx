@@ -1,6 +1,6 @@
-import { createContext, Dispatch, ReactNode, Reducer, useEffect, useReducer } from "react";
+import { createContext, Dispatch, ReactNode, Reducer, useReducer } from "react";
 import useDailyWord from "../hooks/useDailyWord";
-import { GuessesMatrix, InputCharacter, LetterState } from "../types";
+import { GuessesMatrix, GuessState, InputCharacter, LetterState } from "../types";
 import { checkLetterPositions } from "../utils";
 import words from "../words";
 
@@ -16,63 +16,89 @@ type Value = {
 }
 
 const defaultMatrix: GuessesMatrix = [
-  [
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-  ],
-  [
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-  ],
-  [
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-  ],
-  [
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-  ],
-  [
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-  ],
-  [
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-    { letter: "", state: LetterState.EMPTY },
-  ],
+  {
+    state: GuessState.WRITING,
+    guess: [
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+    ]
+  },
+  {
+    state: GuessState.WRITING,
+    guess: [
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+    ]
+  },
+  {
+    state: GuessState.WRITING,
+    guess: [
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+    ]
+  },
+  {
+    state: GuessState.WRITING,
+    guess: [
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+    ]
+  },
+  {
+    state: GuessState.WRITING,
+    guess: [
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+    ]
+  },
+  {
+    state: GuessState.WRITING,
+    guess: [
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+      { letter: "", state: LetterState.EMPTY },
+    ]
+  },
 ];
 
 const MatrixReducer: Reducer<State, InputCharacter> = ({ row, matrix, word }, action) => {
   const newMatrix: GuessesMatrix = JSON.parse(JSON.stringify(matrix));
-  const currentLine = newMatrix[row].map(el => el.letter).join('');
+  const currentLine = newMatrix[row].guess.map(el => el.letter).join('');
 
   switch (action) {
     case "←": {
       if (currentLine.length !== 0) {
-        newMatrix[row][currentLine.length - 1].letter = "";
+        newMatrix[row].guess[currentLine.length - 1].letter = "";
+        newMatrix[row].state = GuessState.WRITING;
       }
       break;
     }
     case "↵": {
-      if (currentLine.length === 5 && words.includes(currentLine)) {
+      if (currentLine.length !== 5) break;
+
+      if (!words.includes(currentLine)) {
+        newMatrix[row].state = GuessState.ERROR
+        break;
+      }
+      
+      if (words.includes(currentLine)) {
         newMatrix[row] = checkLetterPositions(matrix[row], word);
         row++;
       }
@@ -80,10 +106,10 @@ const MatrixReducer: Reducer<State, InputCharacter> = ({ row, matrix, word }, ac
     }
     default: {
       if (currentLine.length !== 5)
-        newMatrix[row][currentLine.length].letter = action;
+        newMatrix[row].guess[currentLine.length].letter = action;
     }
   }
-  
+
   return {
     row,
     matrix: newMatrix,

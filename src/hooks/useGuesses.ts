@@ -1,4 +1,4 @@
-import { KeyboardEventHandler, MouseEventHandler, useCallback, useContext, useState } from "react";
+import { KeyboardEventHandler, MouseEventHandler, useCallback, useContext } from "react";
 import { BaseCharacter } from "../types";
 import { MatrixContext } from "../context";
 

@@ -1,7 +1,36 @@
-.guesses {
+@keyframes Shake {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+
+  20%, 80% {
+    transform: translateX(2px);
+  }
+
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
+
+.Guesses {
   width: min-content;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: .1875rem;
+}
+
+.Guess {
+  display: flex;
+  gap: .1875rem;
+  align-items: center;
+}
+
+.Shake {
+  animation-name: Shake;
+  animation-duration: var(--animation-duration-shake);
 }

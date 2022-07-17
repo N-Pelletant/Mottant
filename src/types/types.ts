@@ -1,22 +1,25 @@
-import { BaseCharacter, LetterState } from "./enum";
+import { BaseCharacter, GuessState, LetterState } from "./enum";
 
 export type GuessData = { letter: BaseCharacter | "", state: LetterState }
 
-export type GuessDataRow = [
-  GuessData,
-  GuessData,
-  GuessData,
-  GuessData,
-  GuessData,
-];
+export type GuessRow = {
+  state: GuessState,
+  guess: [
+    GuessData,
+    GuessData,
+    GuessData,
+    GuessData,
+    GuessData,
+  ]
+};
 
 export type GuessesMatrix = [
-  GuessDataRow,
-  GuessDataRow,
-  GuessDataRow,
-  GuessDataRow,
-  GuessDataRow,
-  GuessDataRow,
+  GuessRow,
+  GuessRow,
+  GuessRow,
+  GuessRow,
+  GuessRow,
+  GuessRow,
 ];
 
 export type InputCharacter = BaseCharacter | "↵" | "←";

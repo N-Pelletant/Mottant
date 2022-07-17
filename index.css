@@ -6,6 +6,7 @@
 :root {
     --animation-duration-pop: 100ms;
     --animation-duration-flip: 200ms;
+    --animation-duration-shake: 600ms;
     --color-tone-1: #ffffff;
     --color-tone-2: #818384;
     --color-tone-3: #565758;

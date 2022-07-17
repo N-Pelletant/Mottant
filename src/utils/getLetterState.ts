@@ -4,7 +4,7 @@ export const getLetterState = (matrix: GuessesMatrix, key: BaseCharacter) => {
   let state = LetterState.UNKNOWN;
 
   for (const row of matrix) {
-    for (const element of row) {
+    for (const element of row.guess) {
       if (element.letter !== key) 
         continue;
 

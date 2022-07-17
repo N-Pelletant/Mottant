@@ -1,4 +1,5 @@
-import { GuessesMatrix } from "../../types";
+import cn from 'classnames';
+import { GuessesMatrix, GuessState } from "../../types";
 import { Letter } from "../Letter";
 import classes from './Guesses.module.css';
 
@@ -9,12 +10,20 @@ type GuessesProps = {
 const Guesses = ({ matrix }: GuessesProps) => {
 	return (
 		<div className={classes.guesses}>
-			{
-				matrix.map(
-					(row, i1) => (
-						row.map(
+			{matrix.map(
+				({ guess, state }, i1) => (
+					<div
+						key={i1}
+						className={
+							cn(
+								classes.guess,
+								{ [classes.shake]: state === GuessState.ERROR }
+							)
+						}
+					>
+						{guess.map(
 							({ letter, state }, i2) => (
-								<Letter 
+								<Letter
 									key={`${i1}_${i2}`}
 									data-index={i2}
 									data-letter={letter || undefined}
@@ -23,10 +32,10 @@ const Guesses = ({ matrix }: GuessesProps) => {
 									{letter}
 								</Letter>
 							)
-						)
-					)
+						)}
+					</div>
 				)
-			}
+			)}
 		</div>
 	);
 }

@@ -34,3 +34,10 @@ export enum LetterState {
   MISPLACED = "misplaced",
   PRESENT = "present",
 }
+
+export enum GuessState {
+  WRITING = "writing",
+  ERROR = "error",
+  INCOMPLETE = "incomplete",
+  COMPLETE = "complete",
+}
