@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import classes from './Game.module.css';
 import { Guesses, Keyboard } from "../../Components"
 import { useGuesses } from "../../hooks";
@@ -9,10 +9,12 @@ const Game = () => {
   const { matrix, kbEventHandler, mouseEventHandler } = useGuesses();
   const ref = useRef<HTMLDivElement>(null);
 
+  useEffect(() => ref.current?.focus(), [ref]);
+
   const checkLetterState = useCallback(
     (key: BaseCharacter) => getLetterState(matrix, key), 
     [matrix]
-    );
+  );
 
   return (
     <div
