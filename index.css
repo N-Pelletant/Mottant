@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 :root {
-    --animation-duration-pop: 100ms;
+    --animation-duration-pop: 200ms;
     --animation-duration-flip: 500ms;
     --animation-duration-shake: 600ms;
     --color-tone-1: #ffffff;
