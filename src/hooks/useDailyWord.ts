@@ -11,7 +11,11 @@ const mulberry32 = (seed: number) => {
 const useDailyWord = () => {
   const word = useMemo(() => {
     const seed = Math.floor(new Date().getTime() / 1000) * 1000;
-    return words[Math.floor(mulberry32(seed) * words.length)];
+    const word = words[Math.floor(mulberry32(seed) * words.length)];
+    console.groupCollapsed("This is the word");
+    console.log(word);
+    console.groupEnd();
+    return word;
   }, []);
 
   return word;
